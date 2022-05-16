@@ -1,6 +1,5 @@
 package com.example.violetserver.config;
 
-import com.example.violetserver.record.service.RecordService;
 import com.example.violetserver.service.RedisMessageSubscriber;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +12,8 @@ import org.springframework.data.redis.listener.PatternTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.Topic;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
+
+import javax.sound.midi.SysexMessage;
 
 @Configuration
 public class RedisConfig {
@@ -36,26 +37,9 @@ public class RedisConfig {
     }
 
     @Bean
-    MessageListenerAdapter messageListener() {
-        return new MessageListenerAdapter(redisMessageSubscriber);
-    }
-
-    @Bean
-    RedisMessageListenerContainer redisContainer() {
+    public RedisMessageListenerContainer redisMessageListenerContainer() {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(redisConnectionFactory());
-        container.addMessageListener(messageListener(), topic());
         return container;
-    }
-
-    @Bean
-    Topic topic() {
-        return new PatternTopic("__keyevent@*__:expired");
-    }
-
-    public final RedisMessageSubscriber redisMessageSubscriber;
-
-    public RedisConfig(RedisMessageSubscriber redisMessageSubscriber) {
-        this.redisMessageSubscriber = redisMessageSubscriber;
     }
 }
