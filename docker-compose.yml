@@ -9,3 +9,13 @@ services:
       - ./config/:/docker-entrypoint-initdb.d/
     ports:
       - 3306:3306
+
+  violet-redis:
+    image: redis
+    container_name: violet-redis
+    command: redis-server --port 6379
+    labels:
+      - "name=redis"
+      - "mode=standalone"
+    ports:
+      - 6379:6379
