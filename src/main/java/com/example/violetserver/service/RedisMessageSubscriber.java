@@ -1,9 +1,8 @@
 package com.example.violetserver.service;
 
-import com.example.violetserver.record.service.RecordService;
+import com.example.violetserver.record.RecordService;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.listener.PatternTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.stereotype.Service;

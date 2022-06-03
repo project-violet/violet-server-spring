@@ -13,9 +13,7 @@ services:
   violet-redis:
     image: redis
     container_name: violet-redis
-    command:
-      - redis-server --port 6379
-      - redis-cli config set notify-keyspace-events AKE
+    entrypoint: ["redis-cli config set notify-keyspace-events AKE"]
     labels:
       - "name=redis"
       - "mode=standalone"

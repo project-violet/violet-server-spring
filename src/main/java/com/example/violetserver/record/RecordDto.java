@@ -1,4 +1,4 @@
-package com.example.violetserver.record.dto;
+package com.example.violetserver.record;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,6 +12,7 @@ public class RecordDto {
     public static class ViewCloseRequest {
         private int no;
         private int time;
+        private String user;
     }
 
     @Data

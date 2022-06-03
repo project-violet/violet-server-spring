@@ -1,7 +1,5 @@
-package com.example.violetserver.record.controller;
+package com.example.violetserver.record;
 
-import com.example.violetserver.record.dto.RecordDto;
-import com.example.violetserver.record.service.RecordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +9,6 @@ import org.springframework.web.bind.annotation.*;
 public class RecordController {
 
     private final RecordService recordService;
-
-    @GetMapping("/hello")
-    @ResponseBody
-    public String hello() {
-        return "hello!";
-    }
 
     @PostMapping("/view_close")
     @ResponseBody
